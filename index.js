@@ -1,1 +1,1 @@
-exports.TinyENVs = TinyENVs;
+exports.TinyENVs = require('./lib/TinyENVs');
