@@ -1,0 +1,23 @@
+{
+  "name": "tiny-envs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "tinyRush",
+    "email": "tinyrush.team@gmail.com"
+  },
+  "homepage": "https://github.com/tinyRush/tiny-envs#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinyRush/tiny-envs.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^8.0.30"
+  }
+}
