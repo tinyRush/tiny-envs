@@ -3,8 +3,9 @@ import * as fs from 'fs';
 import { TinyENVsOptions } from '../index';
 
 function TinyENVs(options?: TinyENVsOptions) {
-  let envFilePath = _createEnvFilePath(options);
-  _loadENVs(envFilePath);
+  let filePaths = _createEnvFilePath(options);
+  _loadENVs(filePaths.envGeneralFilePath);
+  _loadENVs(filePaths.envFilePath);
 }
 
 export { TinyENVs };
@@ -14,11 +15,16 @@ function _createEnvFilePath(options: TinyENVsOptions) {
   let envKey = options.envKey || 'NODE_ENV';
   let envDefault = options.envDefault || 'development';
   process.env[envKey] = process.env[envKey] || envDefault;
-  let envFolder = options.envFolder || 'envs';
   let envFileName = `${process.env[envKey]}.json`;
+  let envGeneralFileName = `${options.envGeneralFileName || 'general'}.json`;
+  let envFolder = options.envFolder || 'envs';
+  let envGeneralFilePath = path.resolve('.', envFolder, envGeneralFileName);
   let envFilePath = path.resolve('.', envFolder, envFileName);
 
-  return envFilePath;
+  return {
+    envGeneralFilePath: envGeneralFilePath,
+    envFilePath: envFilePath
+  };
 }
 
 function _loadENVs(envFilePath: string) {
