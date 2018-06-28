@@ -1,1 +1,1 @@
-module.exports = require('./lib/TinyENVs');
+module.exports = require('./lib/tinyENVs');

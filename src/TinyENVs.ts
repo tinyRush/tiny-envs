@@ -2,15 +2,15 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { TinyENVsOptions } from '../index';
 
-function TinyENVs(options?: TinyENVsOptions) {
-  let filePaths = _createEnvFilePath(options);
-  _loadENVs(filePaths.envGeneralFilePath);
-  _loadENVs(filePaths.envFilePath);
+function load(options?: TinyENVsOptions) {
+  let filePaths = createEnvFilePath(options);
+  loadENVs(filePaths.envGeneralFilePath);
+  loadENVs(filePaths.envFilePath);
 }
 
-export { TinyENVs };
+export { load }
 
-function _createEnvFilePath(options: TinyENVsOptions) {
+function createEnvFilePath(options: TinyENVsOptions) {
   options = options || {};
   let envKey = options.envKey || 'NODE_ENV';
   let envDefault = options.envDefault || 'development';
@@ -27,7 +27,7 @@ function _createEnvFilePath(options: TinyENVsOptions) {
   };
 }
 
-function _loadENVs(envFilePath: string) {
+function loadENVs(envFilePath: string) {
   let data = fs.readFileSync(envFilePath);
   try {
     let envOptions = JSON.parse(data.toString());
